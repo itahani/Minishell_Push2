@@ -19,7 +19,7 @@ static void	handle_quote(char **str, t_quote *quote)
 		quote->quote = *str[0];
 		(*str)++;
 	}
-	else if (*str[0] == quote->quote && quote->quote != 0)
+	if (*str[0] == quote->quote && quote->quote != 0)
 	{
 		quote->quote = 0;
 		(*str)++;
@@ -45,11 +45,13 @@ char	*expand_env_and_quote(char *str, t_init *init)
 
 	result = "";
 	quote.quote = 0;
-	while (*str)
+	printf("str problemo when quote is fixed lets go %s\n", str);
+	while (str && *str)
 	{
 		handle_quote(&str, &quote);
 		handle_env(init, &str, &result, &quote);
 	}
+	printf("str problemo when quote is fixed lets go %s\n", str);
 	return (result);
 }
 
