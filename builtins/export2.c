@@ -43,9 +43,7 @@ int	valid_only_str(char *str)
 int	valid_until_equal(char *str)
 {
 	int	i;
-	int	y;
 
-	y = 0;
 	i = 0;
 	while (str[i] && str[i] != '=')
 	{

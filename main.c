@@ -26,7 +26,6 @@ void	sig_process(int sig_num)
 
 int	parsing(t_init *init, char *read_line)
 {
-	t_token_list	*head;
 
 	init->lst_mal = NULL;
 	lstaddback_malloc(init, lstnew_malloc(read_line));
@@ -35,7 +34,6 @@ int	parsing(t_init *init, char *read_line)
 		return (free_s_init(init), 1);
 	expander_expanding(init);
 	init->lst_token = get_all_token(init);
-	head = init->lst_token;
 	return (0);
 }
 

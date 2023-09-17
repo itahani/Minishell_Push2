@@ -105,7 +105,7 @@ all:		${NAME}
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):	${MAIN_M} ${OBJS}
-		${CC} ${LFALGS} ${MAIN_M} ${OBJS} -o ${NAME}
+		${CC} ${MAIN_M} ${OBJS} -o ${NAME} ${LFALGS} 
 
 clean:
 		${RM} ${OBJS}

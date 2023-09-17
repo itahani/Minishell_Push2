@@ -31,8 +31,10 @@ t_str_list	*lstlast_str(t_str_list *lst)
 	if (lst == NULL){printf("NULL");
 		return (0);}
 	head = lst;
-	while (head->next){printf("str === %s\n", head->str_list);
-		head = head->next;}
+	while (head->next)
+	{
+		head = head->next;
+	}
 	return (head);
 }
 

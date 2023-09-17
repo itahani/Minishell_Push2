@@ -43,12 +43,10 @@ int	only_here_doc(t_token_list *token_list)
 
 void	real_exec(t_init *init)
 {
-	t_str_list		*del;
 	char			**all_args;
 
 	all_args = args_to_str(init->lst_token->arguments, \
 		ft_size_str(init->lst_token->arguments), init);
-	del = init->lst_token->delimeter;
 	if (here_doc_exist(init) >= 1)
 		while_here_doc_exist(init);
 	if (init->here_doc_tinker == 0)

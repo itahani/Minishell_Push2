@@ -26,11 +26,18 @@ int	valid_after_equal(char *str)
 
 int	valid_export(char **arguments)
 {
-	if (valid_first_letter(arguments[1], 0) == 0)
-		return (0);
-	if (valid_until_equal(arguments[1]) == 0)
-		return (0);
-	else if (valid_after_equal(arguments[1]) == 0)
-		return (0);
+	int i;
+
+	i = 1;
+	while (arguments[i])
+	{
+		if (valid_first_letter(arguments[i], 0) == 0)
+			return (0);
+		if (valid_until_equal(arguments[i]) == 0)
+			return (0);
+		else if (valid_after_equal(arguments[i]) == 0)
+			return (0);
+		i++;
+	}
 	return (1);
 }

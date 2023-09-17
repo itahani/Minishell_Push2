@@ -27,21 +27,27 @@ char	**exportator(char *str)
 	splittos = ft_split(str, '=');
 	return (splittos);
 }
-
+//Boucler sur i pour rajouter tout les arguments
 void	the_real_export(char **arguments, t_init *init)
 {
 	char	**str;
+	int		i;
 
+	i = 1;
 	str = NULL;
 	if (size_double_tab(arguments) == 1)
 		print_lst_env(init->lst_env);
-	else if (size_double_tab(arguments) == 2)
+	else if (size_double_tab(arguments) >= 2)
 	{
 		if (valid_export(arguments) == 1)
 		{
-			str = exportator(arguments[1]);
-			export_to_linked_list(init, str);
-			free_tab_tab(str);
+			while(arguments[i])
+			{
+				str = exportator(arguments[i]);
+				export_to_linked_list(init, str);
+				free_tab_tab(str);
+				i++;
+			}
 		}
 	}
 	else

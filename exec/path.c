@@ -72,9 +72,7 @@ char	*path_maker(t_init *init, t_str_list *c, char *path, t_exec_init *e_i)
 {
 	char	*res;
 	char	**splittos;
-	int		i;
 
-	i = -1;
 	if (ft_strlen(init->lst_token->arguments->str_list) != 0)
 	{	
 		res = path_res(init, c, e_i);

@@ -14,12 +14,10 @@
 
 void	my_wait_pid(t_exec_init exec_init)
 {
-	int		i;
 	pid_t	tmp;
 	int		status;
 
 	(void)exec_init;
-	i = 0;
 	while (1)
 	{
 		tmp = wait(&status);
@@ -29,7 +27,7 @@ void	my_wait_pid(t_exec_init exec_init)
 		{
 			g_status_exit_code = 128 + WTERMSIG(status);
 			if (g_status_exit_code == 130 || g_status_exit_code == 131)
-				;
+				printf("\n");
 		}
 		if (tmp == -1)
 			break ;
