@@ -68,10 +68,19 @@ char	*get_path_from_home(char *path, char **envp, t_init *init)
 
 static int	handle_dash_option(t_init *init)
 {
-	if (chdir(get_env_value("OLDPWD", init)) == -1)
-		return (0);
-	grep_old_pwd_and_new(init);
+	if (get_env_value("OLDPWD", init) != NULL)
+	{
+		if (chdir(get_env_value("OLDPWD", init)) == -1)
+			return (0);
+		grep_old_pwd_and_new(init);
 	return (1);
+	}
+	else
+	{
+		printf("OLDPWD NOT SET\n");
+		return (1);
+	}
+
 }
 
 static int	handle_home_option(char **p, char **envp, t_init *init, int tilde)
