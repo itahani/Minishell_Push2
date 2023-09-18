@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:08:59 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/18 13:11:34 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:58:43 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ int	at_least_oneisspace(char *str)
 	return (0);
 }
 
-char	*sep_init(char *sep)
+char* initializeSep(char* sepString)
 {
-	sep[1] = 9;
-	sep[2] = 10;
-	sep[3] = 11;
-	sep[4] = 12;
-	sep[5] = 13;
-	sep[6] = 32;
-	return (sep);
+    char* sep;
+	sep = malloc(sizeof(char) * (ft_strlen(sepString) + 1));
+    if (sep != NULL) {
+        // Copy the contents of sepString to sep
+        ft_strcpy(sep, sepString);
+    }
+    return sep;
 }
 
 char	**split_for_expand(t_init *init, char *str)
@@ -69,8 +69,7 @@ char	**split_for_expand(t_init *init, char *str)
 	char	**splittos;
 	char	*sep;
 
-	sep = NULL;
-	sep = sep_init(sep);
+	sep = initializeSep("\t\n\v\f\r ");
 	(void)init;
 	splittos = ft_split_piscine(str, sep);
 	lstaddback_malloc(init, lstnew_malloc(splittos));
