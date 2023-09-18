@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:40:58 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/06 22:02:40 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/18 14:42:45 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,7 +289,7 @@ void			print_lst_lex(t_lex_list *list);
 void			print_lst_env(t_env_list *list);
 int				valid_after_equal(char *str);
 int				valid_export(char **arguments);
-int				size_double_tab(char **arguments);
+int				size_double_txeab(char **arguments);
 int				valid_first_letter(char *str, int i);
 int				valid_only_str(char *str);
 int				valid_until_equal(char *str);

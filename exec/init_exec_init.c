@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   init_exec_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:29:59 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/08 18:44:20 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/18 16:34:49 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void special_print(t_exec_init *exec_init, t_init *init)
+{
+	printf("Minishell : command not found\n");
+	close(exec_init->mypipe[1]);
+	close(exec_init->mypipe[0]);
+	close(exec_init->pipetmp);
+	free_env_list(init->lst_env);
+	free_s_init(init);
+}
 
 t_exec_init	init_exec_struct(t_init *init)
 {
@@ -30,8 +40,8 @@ void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 
 	// //SUPPRIMER
 	// //
-	// if (init->lst_token->arguments)
-	// printf("ARGUMENT ==== %s\n", init->lst_token->arguments->str_list);
+	if (init->lst_token->arguments)
+	printf("ARGUMENT ==== %s\n", init->lst_token->arguments->str_list);
 
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
@@ -61,6 +71,7 @@ void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 	if (init->lst_token->arguments != NULL && \
 		ft_strlen(init->lst_token->arguments->str_list) != 0)
 			command_manager(init, &exec_init, i);
-
+	else
+		special_print(&exec_init, init);
 	exit(0);
 }

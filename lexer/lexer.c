@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:51:54 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/08/14 13:37:47 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/18 14:42:19 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	word_manager(char *read_line, t_lex_list **lex_list, t_init *init)
 
 	size = length_word(read_line);
 	word = malloc(sizeof(char) * (size + 1));
+	if (!word)
+		return (free_s_init(init), exit(2), (void)0);
 	lstadd_back_lex(lex_list, lstnew_lex(word, WORD, init));
 	write_word(read_line, &word);
 }

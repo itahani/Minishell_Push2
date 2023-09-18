@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/14 17:49:00 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/18 16:36:26 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	parsing(t_init *init, char *read_line)
 		return (free_s_init(init), 1);
 	expander_expanding(init);
 	init->lst_token = get_all_token(init);
+	print_all_token(init->lst_token);
 	return (0);
 }
 
