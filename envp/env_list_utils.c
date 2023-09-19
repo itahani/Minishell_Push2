@@ -6,7 +6,7 @@
 /*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:54 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/08 18:52:44 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/19 15:51:06 by itahani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_lst_env(t_env_list *list)
 			printf("1%s\n", list->name);
 		}
 		else
-			printf("2 %s=\"%s\"\n", list->name, list->value);
+			printf("export %s=\"%s\"\n", list->name, list->value);
 		list = list->next;
 	}
 }
