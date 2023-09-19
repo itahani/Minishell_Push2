@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:52:38 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/11 17:38:25 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/19 14:24:58 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,25 @@ void	my_wait_pid(t_exec_init exec_init)
 
 int	here_doc_exist(t_init *init)
 {
-	t_str_list	*tmp;
+	t_token_list	*tmp;
+	t_str_list		*tmp2;
 	int			i;
 
 	i = 0;
-	tmp = init->lst_token->delimeter;
+	tmp = init->lst_token;
+	tmp2 = NULL;
+	print_all_token(init->lst_token);
 	while (tmp)
 	{
-		i++;
+		tmp2 = tmp->delimeter;
+		while(tmp2)
+		{
+			if (tmp2->str_list)
+				i++;
+			tmp2 = tmp2->next;
+			printf("----xxxx------- \n");
+		}
+		printf("i :  ---   %d\n", i);
 		tmp = tmp->next;
 	}
 	return (i);

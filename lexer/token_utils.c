@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:22:57 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/08 14:20:39 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/19 14:08:28 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,8 @@ void	token_here_doc(t_token_list **t, t_lex_list **l, t_init *init)
 	(*t)->i_fd = HERE_DOC;
 	*l = (*l)->next;
 	next = lstnew_str((*l)->word, init);
-	//SUPPRIMER
-	// printf("HEREDOC ==== %s\n", next->str_list);
-	//SUPPRIMER
+	//Supprimer
+	printf("next for heredoc %s\n", next->str_list);
 	lstaddback_str(&(*t)->delimeter, next);
 	*l = (*l)->next;
 }

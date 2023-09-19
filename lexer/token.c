@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:40:36 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/18 15:23:13 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:53:01 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_token_list	*get_all_token(t_init *init)
 
 	token_head = NULL;
 	token_next = lst_new_token(init);
+	print_lst_lex(init->lst_lex);
 	while (init->lst_lex)
 	{
 		if (init->lst_lex->operator == PIPE)
