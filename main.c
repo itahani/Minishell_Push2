@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 15:18:12 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:41:42 by itahani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 
 	// printenv(env);
-	init_main(&init, env); 
+	init_main(&init, env);
 	while (1)
 	{
 		init.read_line = readline("minishell :");
@@ -100,7 +100,7 @@ int	main(int argc, char **argv, char **env)
 	}
 	if (init.read_line)
 		free(init.read_line);
-	// if (init.lst_env)
-	// 	free_env_list(init.lst_env);
+	if (init.lst_env)
+		free_env_list(init.lst_env);
 	return (0);
 }
