@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 19:21:37 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/18 15:38:56 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:15:12 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	command_manager(t_init *init, t_exec_init *exec_init, int i)
 
 	(void)i;
 	path = NULL;
+	printf("====-----312------======");
 	env = env_to_str(init, init->lst_env, ft_size_env(init->lst_env));
 	all_args = args_to_str(init->lst_token->arguments, \
 		ft_size_str(init->lst_token->arguments), init);
@@ -96,6 +97,7 @@ void	command_manager(t_init *init, t_exec_init *exec_init, int i)
 	}
 	else if (is_command_builtin(all_args[0]))
 	{
+		printf("====-----312------======");
 		exit_close(exec_init);
 		builtin_manage(init, all_args[0], all_args);
 		free_env_list(init->lst_env);

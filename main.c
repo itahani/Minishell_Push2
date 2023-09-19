@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 14:11:28 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:18:12 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	main(int argc, char **argv, char **env)
 		init.here_doc_tinker = 0;
 		if (!init.read_line)
 		{
-			free_env_list(init.lst_env);
 			printf("exit\n");
 			break ;
 		}

@@ -6,13 +6,13 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:29:59 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/18 16:34:49 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:26:36 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void special_print(t_exec_init *exec_init, t_init *init)
+void 	special_print(t_exec_init *exec_init, t_init *init)
 {
 	printf("Minishell : command not found\n");
 	close(exec_init->mypipe[1]);
@@ -71,7 +71,7 @@ void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 	if (init->lst_token->arguments != NULL && \
 		ft_strlen(init->lst_token->arguments->str_list) != 0)
 			command_manager(init, &exec_init, i);
-	else
+	else if (init->lst_token->arguments->str_list == NULL)
 		special_print(&exec_init, init);
 	exit(0);
 }
