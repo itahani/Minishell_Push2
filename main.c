@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 16:41:42 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:24:07 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	sig_process(int sig_num)
 
 int	parsing(t_init *init, char *read_line)
 {
-
 	init->lst_mal = NULL;
 	lstaddback_malloc(init, lstnew_malloc(read_line));
 	init->lst_lex = lexer_lexing(read_line, init);

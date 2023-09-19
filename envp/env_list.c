@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:51:43 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/19 15:50:07 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:26:39 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ t_env_list	*init_env_list(char **env)
 
 	i = 0;
 	env_list = NULL;
-	// printf("\n\n-=-=-=-=-=-=-=- DEBUT ATTRIBUTION ENV -=-=-=-=-=-=-=-\n\n");
 	while (env[i])
 	{
 		// printf("Tour %i : ", i);

@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:29:59 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 15:26:36 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:19:09 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 	const int	output_fd = init->lst_token->o_fd;
 	const int	input_fd = init->lst_token->i_fd;
 
-	// //SUPPRIMER
-	// //
 	if (init->lst_token->arguments)
-	printf("ARGUMENT ==== %s\n", init->lst_token->arguments->str_list);
-
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	if (check_infile_fd(init->lst_token) || check_outfile_fd(init->lst_token))
@@ -60,14 +56,6 @@ void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 		redir_in_manager(init->lst_token);
 	else if (input_fd == HERE_DOC)
 		redir_here_doc(init->lst_token);
-	//SUPPRIMER (pour la condition if g changé le || en &&)
-	
-	//SUPPRIMER
-	//SUPPRIMER
-
-	//if (init->lst_token->arguments->str_list)
-	//	printf("bonjour\n\n");
-
 	if (init->lst_token->arguments != NULL && \
 		ft_strlen(init->lst_token->arguments->str_list) != 0)
 			command_manager(init, &exec_init, i);
