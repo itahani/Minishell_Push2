@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:14:56 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 19:40:31 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:10:57 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	closer_the_magasine(int fd, char *filename, int oui, t_init *init)
 
 void	the_writer(int fd, char *str, int size_str)
 {
-	printf("%s", str);
 	write(fd, str, size_str);
 	write(fd, "\n", 1);
 }

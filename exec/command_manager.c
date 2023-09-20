@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 19:21:37 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 18:34:19 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:10:31 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	command_manager(t_init *init, t_exec_init *exec_init, int i)
 		path = path_maker(init, init->lst_token->arguments, \
 			get_env_value("PATH", init), exec_init);
 		exit_close(exec_init);
-		printf("ca leak iciiiiiii  execve \n");
 		execve(path, all_args, env);
 	}
 	else if (is_command_builtin(all_args[0]))

@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:29:59 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 19:03:38 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:13:05 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void		exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 			command_manager(init, &exec_init, i);
 	else if (init->lst_token->arguments && init->lst_token->arguments->str_list == NULL)
 		special_print(&exec_init, init, " : Command not found");
-	special_print(&exec_init, init, "ciao Bello");
+	special_print(&exec_init, init, "");
 	exit(0);
 }

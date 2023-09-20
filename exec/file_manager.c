@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:12:21 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/11 16:03:15 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 20:10:52 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	redir_here_doc(t_token_list *token_list)
 	t_str_list	*del;
 
 	del = lstlast_str(token_list->delimeter);
-	printf("DEL === %s\n", del->str_list2);
 	fd = open(del->str_list2, O_RDONLY);
 	dup2(fd, STDIN_FILENO);
 	close(fd);

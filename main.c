@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 20:08:39 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:09:23 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,6 @@ void	process_input(t_init *init)
 			free(init->read_line);
 	}
 }
-/*
-void	printenv(char **env)
-{
-	int	i;
-
-	i = 0;
-	printf("\n\n---------------- DEBUT AFFICHAGE DE ENV ----------------\n\n");
-	while (env[i])
-	{
-		printf("%s\n", env[i]);
-		i++;
-	}
-	printf("\n\n---------------- FIN AFFICHAGE DE ENV ----------------\n\n");
-}*/
 
 int	main(int argc, char **argv, char **env)
 {

@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:52:38 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 18:40:12 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:10:48 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ int	here_doc_exist(t_init *init)
 			if (tmp2->str_list)
 				i++;
 			tmp2 = tmp2->next;
-			printf("----xxxx------- \n");
 		}
-		printf("i :  ---   %d\n", i);
 		tmp = tmp->next;
 	}
 	return (i);

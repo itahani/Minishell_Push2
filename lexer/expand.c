@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:06:08 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 19:29:02 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:09:37 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*expand_env_and_quote(char *str, t_init *init)
 
 	result = "";
 	quote.quote = 0;
-	printf("str de lexpand xd : %s  \n", str); //SUPPRIMER
 	while (*str)
 	{
 		if ((*str == '\'' || *str == '\"') && quote.quote == 0)

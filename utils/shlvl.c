@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shlvl.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 00:58:33 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/04 20:36:08 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 20:11:54 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	sh_lvl_manager(t_init *init)
 
 	sh_lvl = ft_atoi1(get_env_value("SHLVL", init));
 	sh_lvl++;
-	// printf("sHLvh == %i\n\n", sh_lvl);
 	if (sh_lvl > 1000)
 	{
 		printf("warning: shell level (1000) too high, resetting to 1");

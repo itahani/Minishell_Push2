@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:01:09 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/08 18:55:20 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 20:13:46 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_str_list	*lstlast_str(t_str_list *lst)
 {
 	t_str_list	*head;
 
-	if (lst == NULL){printf("NULL");
-		return (0);}
+	if (lst == NULL)
+		return (0);
 	head = lst;
 	while (head->next)
 	{

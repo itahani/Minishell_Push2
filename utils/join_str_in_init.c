@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:31:37 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/18 15:32:47 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:11:48 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_join_str_in_init(t_init *init, char c, char *src)
 	i = 0;
 	res = malloc(sizeof(char) * (ft_strlen(src) + 2));
 	if (!res)
-		printf("error mess");
+		printf("Malloc error\n");
 	lstaddback_malloc(init, lstnew_malloc(res));
 	while (src[i])
 	{

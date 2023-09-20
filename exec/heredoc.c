@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:54:28 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 19:43:56 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:11:02 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_heredoc(char *delimiteur, t_init *init)
 	int			oui;
 
 	filename = heredoc_name(init->lst_token->delimeter->str_list, init);
-	printf("filename   %s\n", filename);
 	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0777);
 	oui = dup(0);
 	g_status_exit_code = 0;
