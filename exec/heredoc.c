@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:54:28 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/11 17:42:32 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:43:56 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,15 @@ void	ft_heredoc(char *delimiteur, t_init *init)
 	int			oui;
 
 	filename = heredoc_name(init->lst_token->delimeter->str_list, init);
+	printf("filename   %s\n", filename);
 	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0777);
 	oui = dup(0);
 	g_status_exit_code = 0;
 	if (!filename)
 		ft_print_fd("Malloc error\n", 2);
-	// signal(SIGINT, heredoc_sigint);
-	// signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 		line = readline("> ");
-		// printf("LINE === %s\n", line);
-		// printf("G STATUS === %i\n", g_status_exit_code);
 		if (!line)
 		{
 			if (g_status_exit_code == 130)
@@ -40,18 +37,12 @@ void	ft_heredoc(char *delimiteur, t_init *init)
 			break ;
 		}
 		if (ft_strcmp(delimiteur, line) == 0)
-		{
-			if (line)
-				free(line);
 			break ;
-		}
 		else
 			the_writer(fd, expand_env_and_quote(line, init), \
 				ft_strlen(expand_env_and_quote(line, init)));
-		if (line)
-			free(line);
 	}
-	closer_totally_spies(fd, oui);
+	closer_totally_spies(fd, oui, line);
 }
 
 void	while_here_doc_exist(t_init *init)

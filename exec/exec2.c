@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 17:04:43 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 13:49:14 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:34:51 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	real_exec(t_init *init)
 
 	all_args = args_to_str(init->lst_token->arguments, \
 		ft_size_str(init->lst_token->arguments), init);
-	printf("number of here_doc : %d \n", here_doc_exist(init));
 	if (here_doc_exist(init) >= 1)
 		while_here_doc_exist(init);
 	if (init->here_doc_tinker == 0)

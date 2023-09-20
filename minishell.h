@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:40:58 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 16:42:12 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:41:21 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct s_init
 	t_token_list		*lst_token;
 	char				*err_msg;
 	int					check_exec;
+	int					splittos;
 	int					here_doc_tinker;
 }						t_init;
 
@@ -177,7 +178,7 @@ void			exec_child_process(t_init *init, int i, t_exec_init exec_init);
 int				is_only_isspace(char *str);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 char			*heredoc_name(char *delimiteur, t_init *init);
-void			closer_totally_spies(int fd, int oui);
+void			closer_totally_spies(int fd, int oui, char *line);
 void			closer_the_magasine(int fd, char *filename, \
 int oui, t_init *init);
 void			the_writer(int fd, char *str, int size_str);
@@ -342,7 +343,7 @@ void			handle_sigint(int sig);
 void			ft_heredoc(char *delimiteur, t_init *init);
 void			real_exec(t_init *init);
 char			*is_pathabs(t_init *init, char *str, t_exec_init *exec_init);
-int				check_outfile_fd(t_token_list *tok_list);
+int				check_outfile_fd(t_token_list *tok_list, t_init *init);
 int				check_infile_fd(t_token_list *tok_list, t_exec_init *exec_init , t_init *init);
 int				check_if_directory(char *path);
 int				file_exec(char *path);

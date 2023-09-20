@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:08:59 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/18 17:58:43 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:13:59 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	**split_for_expand(t_init *init, char *str)
 	(void)init;
 	splittos = ft_split_piscine(str, sep);
 	lstaddback_malloc(init, lstnew_malloc(splittos));
+	free(sep);
 	return (splittos);
 }
 

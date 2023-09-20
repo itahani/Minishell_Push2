@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_list_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:54 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 15:51:06 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:51:52 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,8 @@ void	print_lst_env(t_env_list *list)
 {
 	while (list)
 	{
-		if (list->i == VALID)
-		{
-			printf("1%s\n", list->name);
-		}
-		else
-			printf("export %s=\"%s\"\n", list->name, list->value);
+
+		printf("export %s=\"%s\"\n", list->name, list->value);
 		list = list->next;
 	}
 }

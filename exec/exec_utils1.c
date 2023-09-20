@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:11:45 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/19 15:25:20 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:41:04 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@ void	handle_execution(t_init *init, int *i, t_exec_init *exec_init)
 {
 	if (pipe(exec_init->mypipe) == -1)
 		free_s_init(init);
-	//SUPPRIMER
-	else
-		printf("pipe cree est : %i\n", exec_init->mypipe[0]);
-	//SUPPRIMER
 	exec_init->realpid = fork();
 	if (exec_init->realpid < 0)
 		free_s_init(init);
@@ -44,9 +40,6 @@ void	exec(t_init *init)
 		printf("\n");
 	else if (g_status_exit_code == 131)
 		printf("Quit (core dumped)\n");
-	//SUPPRIMER
-	printf("Pipe to close : %i\n", exec_init.pipetmp);
-	//SUPPRIMER
 	close(exec_init.pipetmp);
 	heredoc_supp(init->lst_token);
 }

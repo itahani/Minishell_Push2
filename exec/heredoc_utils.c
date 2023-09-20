@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:14:56 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/06 22:03:19 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:40:31 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ char	*heredoc_name(char *delimiteur, t_init *init)
 	return (filename);
 }
 
-void	closer_totally_spies(int fd, int oui)
+void	closer_totally_spies(int fd, int oui, char *line)
 {
 	close(fd);
 	dup2(oui, 0);
 	close(oui);
+	free(line);
 }
 
 void	closer_the_magasine(int fd, char *filename, int oui, t_init *init)
@@ -53,6 +54,7 @@ void	closer_the_magasine(int fd, char *filename, int oui, t_init *init)
 
 void	the_writer(int fd, char *str, int size_str)
 {
+	printf("%s", str);
 	write(fd, str, size_str);
 	write(fd, "\n", 1);
 }

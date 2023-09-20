@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:29:59 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 17:15:56 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:03:38 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void 	special_print(t_exec_init *exec_init, t_init *init, char *str)
 {
-	printf("%s \n", str);
+	if (ft_strlen(str) != 0)	
+		printf("%s \n", str);
 	close(exec_init->mypipe[1]);
 	close(exec_init->mypipe[0]);
 	close(exec_init->pipetmp);
@@ -34,18 +35,16 @@ t_exec_init	init_exec_struct(t_init *init)
 	return (exec_init);
 }
 
-void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
+void		exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 {
 	const int	output_fd = init->lst_token->o_fd;
 	const int	input_fd = init->lst_token->i_fd;
 
-	if (check_infile_fd(init->lst_token,&exec_init, init) || check_outfile_fd(init->lst_token))
-		exit(0);
 	dup2(exec_init.pipetmp, STDIN_FILENO);
+	if (check_outfile_fd(init->lst_token, init) == 1 || check_infile_fd(init->lst_token, &exec_init, init) == 1)
+		special_print(&exec_init, init ,"");
 	if (i != exec_init.nb_command - 1)
-	{
 		dup2(exec_init.mypipe[1], STDOUT_FILENO);
-	}
 	if (output_fd == REDIR_OUT)
 		redir_out_manager(init->lst_token);
 	else if (output_fd == APP_OUT)

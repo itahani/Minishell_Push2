@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:18:29 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/08/14 13:35:37 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:47:31 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,4 @@ void	delete_last_node_lex(t_lex_list **list)
 		tmp = tmp->next;
 	}
 	prev->next = NULL;
-	free(tmp);
 }

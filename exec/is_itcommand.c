@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 15:38:45 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 16:59:15 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:58:50 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,16 @@ int	check_infile_fd(t_token_list *tok_list, t_exec_init *exec_init , t_init *ini
 {
 	t_str_list	*in_file;
 	int			fd;
+	(void)init;
+	(void)exec_init;
 
 	in_file = tok_list->in_file;
 	while (in_file)
 	{
 		if (check_file_exist(in_file->str_list) == 1)
 		{	
-			printf("file does not exist\n");
-			close(exec_init->mypipe[1]);
-			close(exec_init->mypipe[0]);
-			close(exec_init->pipetmp);
-			free_env_list(init->lst_env);
-			free_s_init(init);
-			exit(0);
+			printf("Minishell: %s: No such file or directory\n", in_file->str_list);
+			return (1);
 		}
 		fd = open(in_file->str_list, O_RDONLY);
 		if (fd == -1)
@@ -67,7 +64,25 @@ int	check_infile_fd(t_token_list *tok_list, t_exec_init *exec_init , t_init *ini
 	return (0);
 }
 
-int	check_outfile_fd(t_token_list *tok_list)
+int quitafterpipe(t_init *init)
+{
+	t_lex_list *head;
+	int			res;
+
+	head = init->lst_lex;
+	res = 0;
+	while (head)
+	{
+		if (head->operator == PIPE)
+		{
+			if ((head->next->operator == APP_OUT || head->next->operator == REDIR_OUT || head->next->operator == REDIR_IN || head->next->operator == HERE_DOC))
+				return (1);
+		}
+	}
+	return (0);
+}
+
+int	check_outfile_fd(t_token_list *tok_list, t_init *init)
 {
 	t_str_list	*out_file;
 	int			fd;
@@ -86,6 +101,7 @@ int	check_outfile_fd(t_token_list *tok_list)
 		close(fd);
 		out_file = out_file->next;
 	}
-	// printf("FD == %i\n", fd);
+	if (quitafterpipe(init) == 1)
+		return (1);
 	return (0);
 }

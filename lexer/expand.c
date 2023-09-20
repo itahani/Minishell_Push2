@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:06:08 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/18 15:34:24 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:29:02 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*expand_env_and_quote(char *str, t_init *init)
 
 	result = "";
 	quote.quote = 0;
+	printf("str de lexpand xd : %s  \n", str); //SUPPRIMER
 	while (*str)
 	{
 		if ((*str == '\'' || *str == '\"') && quote.quote == 0)
@@ -61,7 +62,7 @@ char	*expand_env_and_quote(char *str, t_init *init)
 		{
 			expand_env(&str, &result, init);
 			if (at_least_oneisspace(result))
-				init->lst_lex->must_split = 1;
+				init->splittos = 1;
 		}
 		else
 			result = ft_join_str_in_init(init, *str++, result);
@@ -76,7 +77,7 @@ void	expand_word_node(t_init *init, t_lex_list *l_list)
 	char	**splittos;
 
 	l_list->word = expand_env_and_quote(l_list->word, init);
-	if (l_list->must_split == 1)
+	if (init->splittos == 1)
 	{
 		splittos = split_for_expand(init, l_list->word);
 		delete_last_node_lex(&init->lst_lex);
@@ -86,7 +87,7 @@ void	expand_word_node(t_init *init, t_lex_list *l_list)
 				lstnew_lex(*splittos, WORD, init));
 			splittos++;
 		}
-		l_list->must_split = 0;
+		init->splittos = 0;
 	}
 }
 

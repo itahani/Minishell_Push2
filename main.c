@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 17:37:51 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:27:16 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	init_main(t_init *init, char **env)
 {
 	if (!ttyname(1) || !ttyname(0))
 		exit(0);
+	init->splittos = 0;
 	init->lst_env = init_env_list(env);
 	sh_lvl_manager(init);
 	signal(SIGINT, handle_sigint);
