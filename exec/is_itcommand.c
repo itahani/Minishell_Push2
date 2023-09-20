@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_itcommand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 15:38:45 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/11 16:00:38 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 16:59:15 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_if_directory(char *path)
 	return (S_ISDIR(is_directory.st_mode));
 }
 
-int	check_infile_fd(t_token_list *tok_list)
+int	check_infile_fd(t_token_list *tok_list, t_exec_init *exec_init , t_init *init)
 {
 	t_str_list	*in_file;
 	int			fd;
@@ -47,6 +47,16 @@ int	check_infile_fd(t_token_list *tok_list)
 	in_file = tok_list->in_file;
 	while (in_file)
 	{
+		if (check_file_exist(in_file->str_list) == 1)
+		{	
+			printf("file does not exist\n");
+			close(exec_init->mypipe[1]);
+			close(exec_init->mypipe[0]);
+			close(exec_init->pipetmp);
+			free_env_list(init->lst_env);
+			free_s_init(init);
+			exit(0);
+		}
 		fd = open(in_file->str_list, O_RDONLY);
 		if (fd == -1)
 			return (g_status_exit_code = 1, 1);

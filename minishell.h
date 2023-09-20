@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:40:58 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 17:22:39 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:42:12 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,7 +343,7 @@ void			ft_heredoc(char *delimiteur, t_init *init);
 void			real_exec(t_init *init);
 char			*is_pathabs(t_init *init, char *str, t_exec_init *exec_init);
 int				check_outfile_fd(t_token_list *tok_list);
-int				check_infile_fd(t_token_list *tok_list);
+int				check_infile_fd(t_token_list *tok_list, t_exec_init *exec_init , t_init *init);
 int				check_if_directory(char *path);
 int				file_exec(char *path);
 char			**env_to_str(t_init *init, t_env_list *env_list, int size_env);
