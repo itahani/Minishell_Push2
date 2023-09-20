@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 19:27:16 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:08:39 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ int	parsing(t_init *init, char *read_line)
 	init->lst_mal = NULL;
 	lstaddback_malloc(init, lstnew_malloc(read_line));
 	init->lst_lex = lexer_lexing(read_line, init);
-	print_lst_lex(init->lst_lex);
 	if (check_error(init) == 1)
 		return (free_s_init(init), 1);
 	expander_expanding(init);
-	print_lst_lex(init->lst_lex);
 	init->lst_token = get_all_token(init);
 	return (0);
 }

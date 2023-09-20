@@ -68,6 +68,8 @@ char	*get_path_from_home(char *path, char **envp, t_init *init)
 
 static int	handle_dash_option(t_init *init)
 {
+	if (access(get_env_value("OLDPWD", init), F_OK) != 0)
+		return (ft_print_fd("No such file or directory",1), 1);
 	if (get_env_value("OLDPWD", init) != NULL)
 	{
 		if (chdir(get_env_value("OLDPWD", init)) == -1)
