@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:52:38 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 14:24:58 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:06:04 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	here_doc_exist(t_init *init)
 	i = 0;
 	tmp = init->lst_token;
 	tmp2 = NULL;
-	print_all_token(init->lst_token);
 	while (tmp)
 	{
 		tmp2 = tmp->delimeter;

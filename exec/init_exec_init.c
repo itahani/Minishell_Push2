@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:29:59 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 17:19:09 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:26:13 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void 	special_print(t_exec_init *exec_init, t_init *init)
 	close(exec_init->pipetmp);
 	free_env_list(init->lst_env);
 	free_s_init(init);
+	exit(0);
 }
 
 t_exec_init	init_exec_struct(t_init *init)
@@ -38,7 +39,9 @@ void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 	const int	output_fd = init->lst_token->o_fd;
 	const int	input_fd = init->lst_token->i_fd;
 
+	// printf("init->lst_token->arguments %s\n",init->lst_token->arguments->str_list);
 	if (init->lst_token->arguments)
+		printf("!23");
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	if (check_infile_fd(init->lst_token) || check_outfile_fd(init->lst_token))
@@ -59,7 +62,7 @@ void	exec_all_pid(t_init *init, int i, t_exec_init exec_init)
 	if (init->lst_token->arguments != NULL && \
 		ft_strlen(init->lst_token->arguments->str_list) != 0)
 			command_manager(init, &exec_init, i);
-	else if (init->lst_token->arguments->str_list == NULL)
+	// PROBLEME ICI
+	else if (init->lst_token->arguments && init->lst_token->arguments->str_list == NULL)
 		special_print(&exec_init, init);
-	exit(0);
 }

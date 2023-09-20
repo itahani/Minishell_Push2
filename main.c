@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:00:25 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/19 17:32:47 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:37:51 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		process_input(&init);
 	}
-	free_s_init(&init);
 	if (init.read_line)
 		free(init.read_line);
 	if (init.lst_env)
