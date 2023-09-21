@@ -6,7 +6,7 @@
 /*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:23:13 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/06 22:25:38 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/21 14:49:12 by itahani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,30 @@ int	is_word_after_operator(t_init *init)
 	t_lex_list	*lst_lex;
 
 	lst_lex = init->lst_lex;
-	while (lst_lex->operator != REDIR_IN && lst_lex->operator != REDIR_OUT
-		&& lst_lex->operator != HERE_DOC && lst_lex->operator != APP_OUT)
+	while (lst_lex)
 	{
+		while (lst_lex->operator != REDIR_IN && lst_lex->operator != REDIR_OUT
+			&& lst_lex->operator != HERE_DOC && lst_lex->operator != APP_OUT)
+		{
+			if (lst_lex->next)
+				lst_lex = lst_lex->next;
+			else
+				break ;
+		}
+		if (lst_lex->operator == REDIR_IN || lst_lex->operator == REDIR_OUT
+			|| lst_lex->operator == HERE_DOC || lst_lex->operator == APP_OUT)
+		{
+			if (lst_lex->next == NULL || lst_lex->next->operator != WORD)
+			{
+				change_env_value("?", "2", init);
+				return (ft_print_fd("syntax error \
+near unexpected token `newline'", 2), g_status_exit_code = 2, 1);
+			}
+		}
 		if (lst_lex->next)
-			lst_lex = lst_lex->next;
+				lst_lex = lst_lex->next;
 		else
 			break ;
-	}
-	if (lst_lex->operator == REDIR_IN || lst_lex->operator == REDIR_OUT
-		|| lst_lex->operator == HERE_DOC || lst_lex->operator == APP_OUT)
-	{
-		if (lst_lex->next == NULL || lst_lex->next->operator != WORD)
-		{
-			change_env_value("?", "2", init);
-			return (ft_print_fd("syntax error \
-near unexpected token `newline'", 2), g_status_exit_code = 2, 1);
-		}
 	}
 	return (0);
 }
