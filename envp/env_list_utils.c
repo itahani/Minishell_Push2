@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:54 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 19:51:52 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:59:52 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	print_lst_env(t_env_list *list)
 {
 	while (list)
 	{
-
 		printf("export %s=\"%s\"\n", list->name, list->value);
 		list = list->next;
 	}

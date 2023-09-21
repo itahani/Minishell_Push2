@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:52:24 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/08/14 20:36:02 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 21:03:40 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**exportator(char *str)
 	splittos = ft_split(str, '=');
 	return (splittos);
 }
-//Boucler sur i pour rajouter tout les arguments
+
 void	the_real_export(char **arguments, t_init *init)
 {
 	char	**str;
@@ -41,7 +41,7 @@ void	the_real_export(char **arguments, t_init *init)
 	{
 		if (valid_export(arguments) == 1)
 		{
-			while(arguments[i])
+			while (arguments[i])
 			{
 				str = exportator(arguments[i]);
 				export_to_linked_list(init, str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:25:02 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/05 18:35:21 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 21:03:19 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static char	*get_res(char **line, int i, t_init *init)
 			&& ft_scmp(line[i], ">>") != 0))
 	{
 		res = ft_strjoin_space(res, line[i], init);
-		// lstaddback_malloc(init, lstnew_malloc(res));
 		i++;
 	}
 	if (res != NULL)

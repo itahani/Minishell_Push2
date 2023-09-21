@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 18:42:16 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/05 13:42:14 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 21:00:18 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_atoi(const char *str)
 		i++;
 	while (str[i] >= 48 && str[i] <= 57)
 	{
-		// printf("ft _ atoi : %c \n", str[i]);
 		res *= 10;
 		res += (str[i] - 48);
 		i++;

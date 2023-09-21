@@ -6,58 +6,29 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:06:08 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 20:09:37 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:55:34 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// static void	handle_quote(char **str, t_quote *quote)
-// {	
-// 	if ((*str[0] == '\'' || *str[0] == '\"') && quote->quote == 0)
-// 	{
-// 		quote->quote = *str[0];
-// 		(*str)++;
-// 	}
-// 	if (*str[0] == quote->quote && quote->quote != 0)
-// 	{
-// 		quote->quote = 0;
-// 		(*str)++;
-// 	}
-// }
-
-// static void	handle_env(t_init *init, char **str, char **result, t_quote *quote)
-// {
-// 	if (quote->quote != '\'' && is_env(*str))
-// 	{
-// 		expand_env(str, result, init);
-// 		if (at_least_oneisspace(*result))
-// 			init->lst_lex->must_split = 1;
-// 	}
-// 	else
-// 		*result = ft_join_str_in_init(init, *str[0]++, *result);
-// }
-
-char	*expand_env_and_quote(char *str, t_init *init)
+// le 3eme argument doit avoir un t_quote qui a un .quote egal a 0
+// le 4eme 
+char	*expand_env_and_quote(char *str, t_init *init, int quote, char *result)
 {
-	t_quote	quote;
-	char	*result;
-
-	result = "";
-	quote.quote = 0;
 	while (*str)
 	{
-		if ((*str == '\'' || *str == '\"') && quote.quote == 0)
+		if ((*str == '\'' || *str == '\"') && quote == 0)
 		{
-			quote.quote = *str;
+			quote = *str;
 			str++;
 		}
-		else if (*str == quote.quote && quote.quote != 0)
+		else if (*str == quote && quote != 0)
 		{
-			quote.quote = 0;
+			quote = 0;
 			str++;
 		}
-		else if (quote.quote != '\'' && is_env(str))
+		else if (quote != '\'' && is_env(str))
 		{
 			expand_env(&str, &result, init);
 			if (at_least_oneisspace(result))
@@ -75,7 +46,7 @@ void	expand_word_node(t_init *init, t_lex_list *l_list)
 {
 	char	**splittos;
 
-	l_list->word = expand_env_and_quote(l_list->word, init);
+	l_list->word = expand_env_and_quote(l_list->word, init, 0, "");
 	if (init->splittos == 1)
 	{
 		splittos = split_for_expand(init, l_list->word);

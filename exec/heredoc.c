@@ -6,22 +6,20 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:54:28 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 20:11:02 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:54:02 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_heredoc(char *delimiteur, t_init *init)
+// attention toujour mettre dup(0) en 3eme argument et nimporte quoi en 4eme
+void	ft_heredoc(char *delimiteur, t_init *init, int oui, int fd)
 {
 	char		*filename;
 	char		*line;
-	int			fd;
-	int			oui;
 
 	filename = heredoc_name(init->lst_token->delimeter->str_list, init);
 	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0777);
-	oui = dup(0);
 	g_status_exit_code = 0;
 	if (!filename)
 		ft_print_fd("Malloc error\n", 2);
@@ -38,8 +36,8 @@ void	ft_heredoc(char *delimiteur, t_init *init)
 		if (ft_strcmp(delimiteur, line) == 0)
 			break ;
 		else
-			the_writer(fd, expand_env_and_quote(line, init), \
-				ft_strlen(expand_env_and_quote(line, init)));
+			the_writer(fd, expand_env_and_quote(line, init, 0, ""), \
+				ft_strlen(expand_env_and_quote(line, init, 0, "")));
 	}
 	closer_totally_spies(fd, oui, line);
 }
@@ -57,7 +55,7 @@ void	while_here_doc_exist(t_init *init)
 		{
 			if (init->here_doc_tinker == 1)
 				break ;
-			ft_heredoc(init->lst_token->delimeter->str_list, init);
+			ft_heredoc(init->lst_token->delimeter->str_list, init, dup(0), 0);
 			init->lst_token->delimeter = init->lst_token->delimeter->next;
 		}
 		init->lst_token->delimeter = head;

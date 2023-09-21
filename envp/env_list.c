@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:51:43 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/19 17:26:39 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:12:04 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*env_name(char *env)
 	return (name);
 }
 
-t_env_list	*set_env_i()
+t_env_list	*set_env_i(void)
 {
 	t_env_list	*env_list;
 	char		*value;
@@ -75,17 +75,14 @@ t_env_list	*init_env_list(char **env)
 	env_list = NULL;
 	while (env[i])
 	{
-		// printf("Tour %i : ", i);
 		name = env_name(env[i]);
 		value = ft_strdup(getenv(name));
 		lstadd_back_env(&env_list, lstnew_env(name, value));
 		env_list->i = 0;
-		// printf("env name = [%s] value = [%s]\n", name, value);
 		i++;
 	}
-	if (i == 0) // signifie que env est vide
+	if (i == 0)
 		return (set_env_i());
-	// printf("\n\n-=-=-=-=-=-=-=- FIN ATTRIBUTION ENV -=-=-=-=-=-=-=-\n\n");
 	return (env_list);
 }
 
@@ -96,18 +93,4 @@ void	set_value(t_env_list *tmp, char *new_value)
 		tmp->value = ft_strdup(new_value);
 	else
 		tmp->value = NULL;
-}
-
-char	*get_env_value(char *name, t_init *init)
-{
-	t_env_list	*env_list;
-
-	env_list = init->lst_env;
-	while (env_list)
-	{
-		if (ft_strsame(name, env_list->name))
-			return (env_list->value);
-		env_list = env_list->next;
-	}
-	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 17:12:35 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/08/11 23:53:57 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:12:09 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,41 @@ char	*ft_strjoin(char *str1, char *str2)
 		str[y++] = str2[i++];
 	str[y] = '\0';
 	return (str);
+}
+
+int	check_infile_fd(t_token_list *tok_list)
+{
+	t_str_list	*in_file;
+	int			fd;
+
+	in_file = tok_list->in_file;
+	while (in_file)
+	{
+		if (check_file_exist(in_file->str_list) == 1)
+		{	
+			printf("Minishell: %s: No such file or directory\n", \
+			in_file->str_list);
+			return (1);
+		}
+		fd = open(in_file->str_list, O_RDONLY);
+		if (fd == -1)
+			return (g_status_exit_code = 1, 1);
+		close(fd);
+		in_file = in_file->next;
+	}
+	return (0);
+}
+
+char	*get_env_value(char *name, t_init *init)
+{
+	t_env_list	*env_list;
+
+	env_list = init->lst_env;
+	while (env_list)
+	{
+		if (ft_strsame(name, env_list->name))
+			return (env_list->value);
+		env_list = env_list->next;
+	}
+	return (NULL);
 }

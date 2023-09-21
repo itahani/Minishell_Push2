@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:05:03 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/08/14 20:19:19 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/20 21:02:42 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	valid_after_equal(char *str)
 
 int	valid_export(char **arguments)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (arguments[i])

@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:40:58 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 19:41:21 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:37:04 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,8 @@ int				increment_redir_in_count(t_lex_list *lst_lex);
 int				redir_out_error(int count, t_init *init);
 char			*execute_from_path(char **splittos, t_str_list *c);
 int				ft_isitenv(char c);
-char			*expand_env_and_quote(char *str, t_init *init);
+char			*expand_env_and_quote(char *str, t_init *init, int quote, \
+char *result);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strdup(char *str);
 void			f_msg(t_init *init, char *str, char *err_msg);
@@ -340,11 +341,11 @@ int				the_real_pwd(t_init *init);
 //exec
 void			heredoc_sigint(int sig);
 void			handle_sigint(int sig);
-void			ft_heredoc(char *delimiteur, t_init *init);
+void	ft_heredoc(char *delimiteur, t_init *init, int oui, int fd);
 void			real_exec(t_init *init);
 char			*is_pathabs(t_init *init, char *str, t_exec_init *exec_init);
 int				check_outfile_fd(t_token_list *tok_list, t_init *init);
-int				check_infile_fd(t_token_list *tok_list, t_exec_init *exec_init , t_init *init);
+int				check_infile_fd(t_token_list *tok_list);
 int				check_if_directory(char *path);
 int				file_exec(char *path);
 char			**env_to_str(t_init *init, t_env_list *env_list, int size_env);

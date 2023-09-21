@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 00:58:33 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 20:11:54 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:00:03 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	sh_lvl_manager(t_init *init)
 		sh_lvl = 1;
 	}
 	free_itoa = ft_itoa(sh_lvl);
-	// printf("FREEITOA	 == %s\n\n", free_itoa);
 	change_env_value("SHLVL", free_itoa, init);
 	free(free_itoa);
 }

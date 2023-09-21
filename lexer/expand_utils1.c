@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:08:59 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/20 19:13:59 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:15:33 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ int	at_least_oneisspace(char *str)
 	return (0);
 }
 
-char* initializeSep(char* sepString)
+char	*initializesep(char *sepstring)
 {
-    char* sep;
-	sep = malloc(sizeof(char) * (ft_strlen(sepString) + 1));
-    if (sep != NULL) {
-        // Copy the contents of sepString to sep
-        ft_strcpy(sep, sepString);
-    }
-    return sep;
+	char	*sep;
+
+	sep = malloc(sizeof(char) * (ft_strlen(sepstring) + 1));
+	if (sep != NULL)
+		ft_strcpy(sep, sepstring);
+	return (sep);
 }
 
 char	**split_for_expand(t_init *init, char *str)
@@ -69,7 +68,7 @@ char	**split_for_expand(t_init *init, char *str)
 	char	**splittos;
 	char	*sep;
 
-	sep = initializeSep("\t\n\v\f\r ");
+	sep = initializesep("\t\n\v\f\r ");
 	(void)init;
 	splittos = ft_split_piscine(str, sep);
 	lstaddback_malloc(init, lstnew_malloc(splittos));
@@ -84,12 +83,9 @@ void	change_env_value(char *name, char *new_value, t_init *init)
 	tmp = init->lst_env;
 	while (tmp)
 	{
-		// printf("tmp name == %s value == %s\n", tmp->name, tmp->value);
 		if (ft_strsame(tmp->name, name))
 		{
-			// printf("TMP NAME === %s VALUE == %s\n", tmp->name, tmp->value);
 			set_value(tmp, new_value);
-			// printf("TMP NAME === %s NEW VALUE == %s\n", tmp->name, tmp->value);
 			return ;
 		}
 		tmp = tmp->next;

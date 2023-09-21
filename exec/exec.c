@@ -6,7 +6,7 @@
 /*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:52:38 by nklingsh          #+#    #+#             */
-/*   Updated: 2023/09/20 20:10:48 by nklingsh         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:08:39 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	here_doc_exist(t_init *init)
 {
 	t_token_list	*tmp;
 	t_str_list		*tmp2;
-	int			i;
+	int				i;
 
 	i = 0;
 	tmp = init->lst_token;
@@ -46,7 +46,7 @@ int	here_doc_exist(t_init *init)
 	while (tmp)
 	{
 		tmp2 = tmp->delimeter;
-		while(tmp2)
+		while (tmp2)
 		{
 			if (tmp2->str_list)
 				i++;
