@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itahani <itahani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nklingsh <nklingsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:23:13 by itahani           #+#    #+#             */
-/*   Updated: 2023/09/21 14:49:12 by itahani          ###   ########.fr       */
+/*   Updated: 2023/09/21 16:45:53 by nklingsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ int	is_disallowed_op(t_lex_list *lst_lex)
 	return (0);
 }
 
+void	while_loopfor_is_word(t_lex_list	*lst_lex)
+{
+	while (lst_lex->operator != REDIR_IN && lst_lex->operator != REDIR_OUT
+		&& lst_lex->operator != HERE_DOC && lst_lex->operator != APP_OUT)
+	{
+		if (lst_lex->next)
+			lst_lex = lst_lex->next;
+		else
+			break ;
+	}
+}
+
 int	is_word_after_operator(t_init *init)
 {
 	t_lex_list	*lst_lex;
@@ -41,14 +53,7 @@ int	is_word_after_operator(t_init *init)
 	lst_lex = init->lst_lex;
 	while (lst_lex)
 	{
-		while (lst_lex->operator != REDIR_IN && lst_lex->operator != REDIR_OUT
-			&& lst_lex->operator != HERE_DOC && lst_lex->operator != APP_OUT)
-		{
-			if (lst_lex->next)
-				lst_lex = lst_lex->next;
-			else
-				break ;
-		}
+		while_loopfor_is_word(lst_lex);
 		if (lst_lex->operator == REDIR_IN || lst_lex->operator == REDIR_OUT
 			|| lst_lex->operator == HERE_DOC || lst_lex->operator == APP_OUT)
 		{
@@ -86,23 +91,4 @@ int	handle_heredoc_error(t_init *init)
 	ft_print_fd("syntax error near unexpected token", 2);
 	g_status_exit_code = 2;
 	return (1);
-}
-
-int	syntax_error(int count, t_init *init)
-{
-	if (count >= 2)
-	{
-		change_env_value("?", "2", init);
-		ft_print_fd("syntax error near unexpected token `||'", 2);
-		g_status_exit_code = 2;
-		return (1);
-	}
-	if (count == 1)
-	{
-		change_env_value("?", "2", init);
-		ft_print_fd("syntax error near unexpected token `|'", 2);
-		g_status_exit_code = 2;
-		return (1);
-	}
-	return (0);
 }
